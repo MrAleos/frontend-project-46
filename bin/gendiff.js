@@ -1,6 +1,9 @@
-import { Command } from 'commander';
-import readFiles from '../src/parse.js';
+#!/usr/bin/env node
 
+import { Command } from 'commander';
+import * as functions from '../src/parse.js';
+
+const { readFiles, gendiff } = functions;
 const program = new Command();
 program
     .version('1.0.0')
@@ -11,7 +14,10 @@ program
     .action((filepath1, filepath2) => {
         const file1Data = readFiles(filepath1);
         const file2Data = readFiles(filepath2);
-        console.log('File 1 Data:', file1Data);
-        console.log('File 2 Data:', file2Data);
+        const diff = gendiff(file1Data, file2Data);
+        console.log(diff);
     });
 program.parse();
+
+/* gendiff ./__fixtures__/file1.json ./__fixtures__/file2.json */
+/* gendiff /home/mraleo/frontend-project-46/__fixtures__/file1.json /home/mraleo/frontend-project-46/__fixtures__/file2.json */
