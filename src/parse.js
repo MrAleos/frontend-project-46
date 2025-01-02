@@ -16,20 +16,23 @@ const gendiff = (file1, file2) => {
     .concat(file2KeysArray))
     .sort();
   const resultArray = [];
+
   allKeysArray.map((key) => {
-    if (file1.hasOwnProperty(key) && file2.hasOwnProperty(key)) {
+    if (Object.hasOwn(file1, key) && Object.hasOwn(file2, key)) {
       if (file1[key] === file2[key]) {
         resultArray.push(`   ${key}: ${file1[key]}`);
       } else {
         resultArray.push(` - ${key}: ${file1[key]}`);
         resultArray.push(` + ${key}: ${file2[key]}`);
       }
-    } else if (file1.hasOwnProperty(key) && !file2.hasOwnProperty(key)) {
+    } else if (Object.hasOwn(file1, key) && !Object.hasOwn(file2, key)) {
       resultArray.push(` - ${key}: ${file1[key]}`);
-    } else if (file2.hasOwnProperty(key) && !file1.hasOwnProperty(key)) {
+    } else if (Object.hasOwn(file2, key) && !Object.hasOwn(file1, key)) {
       resultArray.push(` + ${key}: ${file2[key]}`);
     }
+    return null;
   });
+
   let resultString = '{\n';
   for (let i = 0; i < resultArray.length; i += 1) {
     resultString += `${resultArray[i]}\n`;
