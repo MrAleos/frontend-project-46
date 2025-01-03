@@ -1,12 +1,14 @@
-import fs from 'fs';
 import path from 'path';
 import _ from 'lodash';
+import { parseJson, parseYaml } from './parsers.js';
 
 const readFiles = (filepath) => {
   const absolutePath = path.resolve(filepath);
-  const readfile = fs.readFileSync(absolutePath, 'utf-8');
-  const jsonParseData = JSON.parse(readfile);
-  return jsonParseData;
+  const format = path.extname(absolutePath);
+  if (format === '.json') {
+    return parseJson(absolutePath);
+  }
+  return parseYaml(absolutePath);
 };
 
 const gendiff = (file1, file2) => {

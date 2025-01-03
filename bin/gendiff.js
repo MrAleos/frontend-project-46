@@ -2,7 +2,7 @@
 /* eslint-disable max-len */
 
 import { Command } from 'commander';
-import * as functions from '../src/parse.js';
+import * as functions from '../src/main.js';
 
 const { readFiles, gendiff } = functions;
 const program = new Command();
@@ -21,4 +21,5 @@ program
 program.parse();
 
 /* gendiff ./__fixtures__/file1.json ./__fixtures__/file2.json */
+/* gendiff ./__fixtures__/file1.json ./__fixtures__/file2.yaml */
 /* gendiff /home/mraleo/frontend-project-46/__fixtures__/file1.json /home/mraleo/frontend-project-46/__fixtures__/file2.json */
