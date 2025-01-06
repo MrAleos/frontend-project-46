@@ -4,7 +4,7 @@
 import { Command } from 'commander';
 import * as functions from '../src/main.js';
 
-const { readFiles, gendiff } = functions;
+const { readFiles, compareFunction } = functions;
 const program = new Command();
 program
   .version('1.0.0')
@@ -15,7 +15,7 @@ program
   .action((filepath1, filepath2) => {
     const file1Data = readFiles(filepath1);
     const file2Data = readFiles(filepath2);
-    const diff = gendiff(file1Data, file2Data);
+    const diff = compareFunction(file1Data, file2Data);
     console.log(diff);
   });
 program.parse();
