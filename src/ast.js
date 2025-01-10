@@ -25,5 +25,4 @@ const buildTreeDiff = (obj1, obj2) => {
   });
   return result;
 };
-
 export default buildTreeDiff;

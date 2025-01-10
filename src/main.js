@@ -8,8 +8,10 @@ const readFiles = (filepath) => {
   const format = path.extname(absolutePath);
   if (format === '.json') {
     return parseJson(absolutePath);
+  } if (format === '.yml' || format === '.yaml') {
+    return parseYaml(absolutePath);
   }
-  return parseYaml(absolutePath);
+  return 'Not support format';
 };
 
 const gendiff = (file1, file2, formatName = 'stylish') => {

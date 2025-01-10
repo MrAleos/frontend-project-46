@@ -6,6 +6,8 @@ const chooseFormatter = (tree, formatter) => {
     return treeFormatterStylish(tree);
   } if (formatter === 'plain') {
     return treeFormatterPlain(tree);
+  } if (formatter === 'json') {
+    return JSON.stringify(tree, null, 4);
   }
   return 'Error';
 };

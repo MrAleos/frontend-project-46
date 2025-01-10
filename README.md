@@ -12,10 +12,10 @@
 ### Git Actions
 [![Node CI](https://github.com/MrAleos/frontend-project-46/actions/workflows/myTest.yml/badge.svg)](https://github.com/MrAleos/frontend-project-46/actions/workflows/myTest.yml)
 
-### genDiff JSON Demo:
+### genDiff Relavite and Absolute Paths Demo:
 [![asciicast](https://asciinema.org/a/MYjiivm45Q09hSqVGakbsC8gz.svg)](https://asciinema.org/a/MYjiivm45Q09hSqVGakbsC8gz)
 
-### genDiff Flat Demo:
+### genDiff File formats Demo:
 [![asciicast](https://asciinema.org/a/x9WhwA6N8M9RMkqelBIfhEOZg.svg)](https://asciinema.org/a/x9WhwA6N8M9RMkqelBIfhEOZg)
 
 ### genDiff Stylish Demo:
@@ -23,3 +23,6 @@
 
 ### genDiff Plain Demo:
 [![asciicast](https://asciinema.org/a/Ft97ptZZRCw6NfThTWLTV1EJM.svg)](https://asciinema.org/a/Ft97ptZZRCw6NfThTWLTV1EJM)
+
+### genDiff Json Demo:
+[![asciicast](https://asciinema.org/a/spB2wAH8a7nqfWxsJf8cY2wX4.svg)](https://asciinema.org/a/spB2wAH8a7nqfWxsJf8cY2wX4)
