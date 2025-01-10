@@ -1,5 +1,4 @@
 import path from 'path';
-import _ from 'lodash';
 import { parseJson, parseYaml } from './parsers.js';
 import buildTreeDiff from './ast.js';
 import treeFormatter from './formatters/stylish.js';
