@@ -15,5 +15,8 @@
 ### genDiff JSON Demo:
 [![asciicast](https://asciinema.org/a/MYjiivm45Q09hSqVGakbsC8gz.svg)](https://asciinema.org/a/MYjiivm45Q09hSqVGakbsC8gz)
 
-### genDiff JSON and Yaml Demo:
+### genDiff JSON and Yaml Flat Structure Demo:
 [![asciicast](https://asciinema.org/a/x9WhwA6N8M9RMkqelBIfhEOZg.svg)](https://asciinema.org/a/x9WhwA6N8M9RMkqelBIfhEOZg)
+
+### gendiff JSON and Yaml Neisted Structure Demo:
+[![asciicast](https://asciinema.org/a/Ty6sdBIwYriln64dT4yQSaobh.svg)](https://asciinema.org/a/Ty6sdBIwYriln64dT4yQSaobh)

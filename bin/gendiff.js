@@ -4,18 +4,19 @@
 import { Command } from 'commander';
 import * as functions from '../src/main.js';
 
-const { readFiles, compareFunction } = functions;
+const { readFiles, gendiff } = functions;
 const program = new Command();
 program
   .version('1.0.0')
   .description('Compares two configuration files and shows a difference.')
-  .option('-f, --format [type]', 'output format')
+  .option('-f, --format [type]', 'output format', 'stylish')
   .helpOption('-h, --help', 'output usage information')
   .arguments('<filepath1> <filepath2>')
   .action((filepath1, filepath2) => {
     const file1Data = readFiles(filepath1);
     const file2Data = readFiles(filepath2);
-    const diff = compareFunction(file1Data, file2Data);
+    const formatter = program.opts().format;
+    const diff = gendiff(file1Data, file2Data, formatter);
     console.log(diff);
   });
 program.parse();
