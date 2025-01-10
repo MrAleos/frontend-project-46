@@ -13,7 +13,7 @@ const stringify = (value, depth = 1) => {
   return `{\n${result.join('\n')}\n${getBracketIndent(depth + 1)}}`;
 };
 
-const treeFormatter = (tree, depth = 1) => {
+const treeFormatterStylish = (tree, depth = 1) => {
   const result = tree.flatMap((node) => {
     switch (node.status) {
       case 'added':
@@ -26,7 +26,7 @@ const treeFormatter = (tree, depth = 1) => {
       case 'unchanged':
         return `${getCurrentIndent(depth)}  ${node.key}: ${stringify(node.value, depth)}`;
       case 'nested':
-        return `${getCurrentIndent(depth)}  ${node.key}: ${treeFormatter(node.children, depth + 1)}`;
+        return `${getCurrentIndent(depth)}  ${node.key}: ${treeFormatterStylish(node.children, depth + 1)}`;
       default:
         return 'Error';
     }
@@ -34,4 +34,4 @@ const treeFormatter = (tree, depth = 1) => {
   return `{\n${result.join('\n')}\n${getBracketIndent(depth)}}`;
 };
 
-export default treeFormatter;
+export default treeFormatterStylish;

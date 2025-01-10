@@ -1,7 +1,7 @@
 import path from 'path';
 import { parseJson, parseYaml } from './parsers.js';
 import buildTreeDiff from './ast.js';
-import treeFormatter from './formatters/stylish.js';
+import chooseFormatter from './formatters/index.js';
 
 const readFiles = (filepath) => {
   const absolutePath = path.resolve(filepath);
@@ -12,9 +12,9 @@ const readFiles = (filepath) => {
   return parseYaml(absolutePath);
 };
 
-const gendiff = (file1, file2, formatter = 'stylish') => {
-  const ast = buildTreeDiff(file1, file2, formatter);
-  const formatAST = treeFormatter(ast);
+const gendiff = (file1, file2, formatName = 'stylish') => {
+  const ast = buildTreeDiff(file1, file2);
+  const formatAST = chooseFormatter(ast, formatName);
   return formatAST;
 };
 

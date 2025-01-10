@@ -2,7 +2,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { readFiles } from '../src/main.js';
 import buildTreeDiff from '../src/ast.js';
-import treeFormatter from '../src/formatters/stylish.js';
+import treeFormatterStylish from '../src/formatters/stylish.js';
+import treeFormatterPlain from '../src/formatters/plain.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -42,6 +43,18 @@ const expectedDataReadFiles = {
     fee: 100500,
   },
 };
+
+const expectedDataTreePlain = `Property 'common.follow' was added with value: false
+Property 'common.setting2' was removed
+Property 'common.setting3' was updated. From true to null
+Property 'common.setting4' was added with value: 'blah blah'
+Property 'common.setting5' was added with value: [complex value]
+Property 'common.setting6.doge.wow' was updated. From '' to 'so much'
+Property 'common.setting6.ops' was added with value: 'vops'
+Property 'group1.baz' was updated. From 'bas' to 'bars'
+Property 'group1.nest' was updated. From [complex value] to 'str'
+Property 'group2' was removed
+Property 'group3' was added with value: [complex value]`;
 
 const expectedDataTreeFormatter = `{
     common: {
@@ -91,6 +104,10 @@ test('reads and parses JSON file correctly', () => {
   expect(file2).toEqual(expectedDataReadFiles);
 });
 
-test('NESTED formattersBuildTreeDiff', () => {
-  expect(treeFormatter(buildTreeDiff(file1, file2))).toEqual(expectedDataTreeFormatter);
+test('Stylish builder', () => {
+  expect(treeFormatterStylish(buildTreeDiff(file1, file2))).toEqual(expectedDataTreeFormatter);
+});
+
+test('Plain builder', () => {
+  expect(treeFormatterPlain(buildTreeDiff(file1, file2))).toEqual(expectedDataTreePlain);
 });

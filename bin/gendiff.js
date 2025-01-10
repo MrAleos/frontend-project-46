@@ -21,6 +21,6 @@ program
   });
 program.parse();
 
-/* gendiff ./__fixtures__/file1.json ./__fixtures__/file2.json */
+/* gendiff --format plain ./__fixtures__/file1.json ./__fixtures__/file2.json */
 /* gendiff ./__fixtures__/file1.json ./__fixtures__/file2.yaml */
 /* gendiff /home/mraleo/frontend-project-46/__fixtures__/file1.json /home/mraleo/frontend-project-46/__fixtures__/file2.json */
