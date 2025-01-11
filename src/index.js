@@ -1,5 +1,5 @@
 import path from 'path';
-import { parseJson, parseYaml } from './parsers.js';
+import { parseJson, parseYaml } from './parse.js';
 import buildTreeDiff from './ast.js';
 import chooseFormatter from './formatters/index.js';
 

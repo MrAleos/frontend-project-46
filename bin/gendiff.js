@@ -2,7 +2,7 @@
 /* eslint-disable max-len */
 
 import { Command } from 'commander';
-import * as functions from '../src/main.js';
+import * as functions from '../src/index.js';
 
 const { readFiles, gendiff } = functions;
 const program = new Command();
