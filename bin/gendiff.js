@@ -2,9 +2,8 @@
 /* eslint-disable max-len */
 
 import { Command } from 'commander';
-import * as functions from '../src/index.js';
+import gendiff from '../src/index.js';
 
-const { readFiles, gendiff } = functions;
 const program = new Command();
 program
   .version('1.0.0')
@@ -13,14 +12,8 @@ program
   .helpOption('-h, --help', 'output usage information')
   .arguments('<filepath1> <filepath2>')
   .action((filepath1, filepath2) => {
-    const file1Data = readFiles(filepath1);
-    const file2Data = readFiles(filepath2);
     const formatter = program.opts().format;
-    const diff = gendiff(file1Data, file2Data, formatter);
+    const diff = gendiff(filepath1, filepath2, formatter);
     console.log(diff);
   });
 program.parse();
-
-/* gendiff --format json ./__fixtures__/file1.json ./__fixtures__/file2.yaml */
-/* gendiff ./__fixtures__/file1.json ./__fixtures__/file2.yaml */
-/* gendiff /home/mraleo/frontend-project-46/__fixtures__/file1.json /home/mraleo/frontend-project-46/__fixtures__/file2.json */

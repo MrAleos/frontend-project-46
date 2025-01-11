@@ -1,23 +1,13 @@
-import path from 'path';
-import { parseJson, parseYaml } from './parse.js';
+import parse from './parse.js';
 import buildTreeDiff from './ast.js';
 import chooseFormatter from './formatters/index.js';
 
-const readFiles = (filepath) => {
-  const absolutePath = path.resolve(filepath);
-  const format = path.extname(absolutePath);
-  if (format === '.json') {
-    return parseJson(absolutePath);
-  } if (format === '.yml' || format === '.yaml') {
-    return parseYaml(absolutePath);
-  }
-  return 'Not support format';
-};
-
-const gendiff = (file1, file2, formatName = 'stylish') => {
+const gendiff = (filePath1, filePath2, formatName = 'stylish') => {
+  const file1 = parse(filePath1);
+  const file2 = parse(filePath2);
   const ast = buildTreeDiff(file1, file2);
   const formatAST = chooseFormatter(ast, formatName);
   return formatAST;
 };
 
-export { readFiles, gendiff };
+export default gendiff;
