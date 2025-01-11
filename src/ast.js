@@ -3,7 +3,7 @@ import _ from 'lodash';
 const buildTreeDiff = (obj1, obj2) => {
   const obj1KeysArray = Object.keys(obj1);
   const obj2KeysArray = Object.keys(obj2);
-  const uniqKeys = _.union(obj1KeysArray, obj2KeysArray).sort();
+  const uniqKeys = _.sortBy(_.union(obj1KeysArray, obj2KeysArray));
   // eslint-disable-next-line array-callback-return, consistent-return
   const result = uniqKeys.map((key) => {
     const valueObj1 = obj1[key];
