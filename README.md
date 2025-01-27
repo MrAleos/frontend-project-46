@@ -11,7 +11,7 @@ Educational project from the Hexlet course that calculates the difference in the
 ### Install:
 Clone repository
 ```
-get clone https://github.com/MrAleos/frontend-project-46.git
+get clone https://github.com/MrAleos/frontend-project-44.git
 ```
 
 Go to the directory of project
@@ -28,6 +28,7 @@ make install
 ```
 Node.js version v18.0.0
 ```
+
 ### How to work:
 Version
 ```
