@@ -11,7 +11,7 @@ Educational project from the Hexlet course that calculates the difference in the
 ### Install:
 Clone repository
 ```
-get clone https://github.com/alllenk1/frontend-project-46.git
+get clone https://github.com/MrAleos/frontend-project-46.git
 ```
 
 Go to the directory of project
