@@ -15,20 +15,24 @@ const stringify = (value, depth = 1) => {
 
 const treeFormatterStylish = (tree, depth = 1) => {
   const result = tree.flatMap((node) => {
-    switch (node.status) {
+    const {
+      key, value, value1, value2, status, children,
+    } = node;
+
+    switch (status) {
       case 'added':
-        return `${getCurrentIndent(depth)}+ ${node.key}: ${stringify(node.value, depth)}`;
+        return `${getCurrentIndent(depth)}+ ${key}: ${stringify(value, depth)}`;
       case 'deleted':
-        return `${getCurrentIndent(depth)}- ${node.key}: ${stringify(node.value, depth)}`;
+        return `${getCurrentIndent(depth)}- ${key}: ${stringify(value, depth)}`;
       case 'changed':
-        return `${getCurrentIndent(depth)}- ${node.key}: ${stringify(node.value1, depth)}\n`
-                + `${getCurrentIndent(depth)}+ ${node.key}: ${stringify(node.value2, depth)}`;
+        return `${getCurrentIndent(depth)}- ${key}: ${stringify(value1, depth)}\n`
+                + `${getCurrentIndent(depth)}+ ${key}: ${stringify(value2, depth)}`;
       case 'unchanged':
-        return `${getCurrentIndent(depth)}  ${node.key}: ${stringify(node.value, depth)}`;
+        return `${getCurrentIndent(depth)}  ${key}: ${stringify(value, depth)}`;
       case 'nested':
-        return `${getCurrentIndent(depth)}  ${node.key}: ${treeFormatterStylish(node.children, depth + 1)}`;
+        return `${getCurrentIndent(depth)}  ${key}: ${treeFormatterStylish(children, depth + 1)}`;
       default:
-        return 'Error';
+        throw new Error(`Unknow status: ${status}`);
     }
   });
   return `{\n${result.join('\n')}\n${getBracketIndent(depth)}}`;

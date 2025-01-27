@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import gendiff from '../src/index.js';
+import parse from '../src/parse.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -13,6 +14,12 @@ const filePath2 = fixturePath('file2.yaml');
 const expectJson = readFile(fixturePath('expectJson.txt'));
 const expectStylish = readFile(fixturePath('expectStylish.txt'));
 const expectPlain = readFile(fixturePath('expectPlain.txt'));
+
+test('unsupport format', () => {
+  const data = 'data';
+  const format = 'txt';
+  expect(() => parse(format, data)).toThrow('Not support format: txt');
+});
 
 test('Stylish builder', () => {
   expect(gendiff(filePath1, filePath2)).toEqual(expectStylish);

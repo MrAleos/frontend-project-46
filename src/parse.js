@@ -1,28 +1,16 @@
-import fs from 'fs';
-import path from 'path';
 import jsYaml from 'js-yaml';
 
-const parseJson = (value) => {
-  const readfile = fs.readFileSync(value, 'utf-8');
-  const jsonParseData = JSON.parse(readfile);
-  return jsonParseData;
-};
+const parseJson = (data) => JSON.parse(data);
 
-const parseYaml = (value) => {
-  const readfile = fs.readFileSync(value, 'utf-8');
-  const yamlParseData = jsYaml.load(readfile);
-  return yamlParseData;
-};
+const parseYaml = (data) => jsYaml.load(data);
 
-const parse = (filepath) => {
-  const absolutePath = path.resolve(filepath);
-  const format = path.extname(absolutePath);
-  if (format === '.json') {
-    return parseJson(absolutePath);
-  } if (format === '.yml' || format === '.yaml') {
-    return parseYaml(absolutePath);
+const parse = (format, data) => {
+  if (format === 'json') {
+    return parseJson(data);
+  } if (format === 'yml' || format === 'yaml') {
+    return parseYaml(data);
   }
-  return 'Not support format';
+  throw new Error(`Not support format: ${format}`);
 };
 
 export default parse;

@@ -4,7 +4,6 @@ const buildTreeDiff = (obj1, obj2) => {
   const obj1KeysArray = Object.keys(obj1);
   const obj2KeysArray = Object.keys(obj2);
   const uniqKeys = _.sortBy(_.union(obj1KeysArray, obj2KeysArray));
-  // eslint-disable-next-line array-callback-return, consistent-return
   const result = uniqKeys.map((key) => {
     const valueObj1 = obj1[key];
     const valueObj2 = obj2[key];
@@ -22,6 +21,7 @@ const buildTreeDiff = (obj1, obj2) => {
         key, value1: valueObj1, value2: valueObj2, status: 'changed',
       };
     }
+    throw new Error(`Error for key: ${key}`);
   });
   return result;
 };
